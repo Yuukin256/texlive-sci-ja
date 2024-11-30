@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY_IMAGE: eguchi1611/texlive-sci-ja
+  REGISTRY_IMAGE: yuukin256/texlive-sci-ja
 
 jobs:
   deploy:
