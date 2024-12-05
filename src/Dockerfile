@@ -14,8 +14,13 @@ RUN wget ${TEXLIVE_MIRROR}/install-tl-unx.tar.gz \
   && ./install-tl -profile texlive.profile --location ${TEXLIVE_MIRROR} \
   && ln -sf /usr/local/texlive/*/bin/* /usr/local/texlive/bin
 
-# latexmkのインストール
-RUN tlmgr install latexmk
+# latexmk, newtx, svgのインストール
+RUN tlmgr update --self --all && \
+  tlmgr install \
+  latexmk \
+  latexindent \
+  newtx \
+  svg
 
 # GhostscriptとGnuplotをインストール
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

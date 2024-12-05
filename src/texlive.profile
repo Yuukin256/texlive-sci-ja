@@ -3,9 +3,7 @@ selected_scheme scheme-custom
 
 collection-basic 1
 collection-bibtexextra 1
-collection-binextra 1
 collection-fontsrecommended 1
-collection-fontsextra 1
 collection-langcjk 1
 collection-langjapanese 1
 collection-latex 1
