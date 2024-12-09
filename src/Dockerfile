@@ -14,7 +14,7 @@ RUN wget ${TEXLIVE_MIRROR}/install-tl-unx.tar.gz \
   && ./install-tl -profile texlive.profile --location ${TEXLIVE_MIRROR} \
   && ln -sf /usr/local/texlive/*/bin/* /usr/local/texlive/bin
 
-# latexmk, newtx, svgのインストール
+# latexmk, latexindent, newtx, svgのインストール
 RUN tlmgr update --self --all && \
   tlmgr install \
   latexmk \
@@ -22,9 +22,10 @@ RUN tlmgr update --self --all && \
   newtx \
   svg
 
-# GhostscriptとGnuplotをインストール
+# GhostscriptとGnuplot、latexindentに必要なパッケージをインストール
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends ghostscript gnuplot \
+  libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl\
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/texlive/texmf-local/tex/latex/gnuplot
