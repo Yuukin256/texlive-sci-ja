@@ -22,6 +22,9 @@ RUN tlmgr update --self --all && \
   newtx \
   svg
 
+# jlisting.sty を配置
+COPY ./jlisting.sty /usr/local/texlive/texmf-local/tex/latex/jlisting/jlisting.sty
+
 # GhostscriptとGnuplot、latexindentに必要なパッケージをインストール
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends ghostscript gnuplot \
