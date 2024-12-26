@@ -14,13 +14,14 @@ RUN wget ${TEXLIVE_MIRROR}/install-tl-unx.tar.gz \
   && ./install-tl -profile texlive.profile --location ${TEXLIVE_MIRROR} \
   && ln -sf /usr/local/texlive/*/bin/* /usr/local/texlive/bin
 
-# latexmk, latexindent, newtx, svgのインストール
+# latexmk, latexindent, newtx, svg, mintedのインストール
 RUN tlmgr update --self --all && \
   tlmgr install \
   latexmk \
   latexindent \
   newtx \
-  svg
+  svg \
+  minted
 
 # jlisting.sty を配置
 COPY ./jlisting.sty /usr/local/texlive/texmf-local/tex/latex/jlisting/jlisting.sty
