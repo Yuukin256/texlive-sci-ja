@@ -1,6 +1,6 @@
 # texlive-sci-ja
 
-TeX Liveのイメージです．日本語と理数系のパッケージが導入されています．VSCodeの開発コンテナで使用する目的で作成しています．
+TeX Liveのイメージです．日本語と理数系，プログラミング系のパッケージが導入されています．VSCodeの開発コンテナで使用する目的で作成しています．
 
 導入パッケージ一覧
 
@@ -14,6 +14,11 @@ collection-latexextra
 collection-latexrecommended
 collection-mathscience
 collection-pictures
+
+latexindent
+newtx
+svg
+minted
 ```
 
 ## 開発コンテナのセットアップ
@@ -23,7 +28,7 @@ collection-pictures
 3. テンプレート選択画面で次を入力．
 
 ```
-ghcr.io/eguchi1611/texlive-sci-ja/template
+ghcr.io/yuukin256/texlive-sci-ja/template
 ```
 
 4. 必要であれば機能を追加し，作成．
@@ -34,5 +39,5 @@ ghcr.io/eguchi1611/texlive-sci-ja/template
 GitHub Container Registry
 
 ```
-docker pull ghcr.io/eguchi1611/texlive-sci-ja:latest
+docker pull ghcr.io/yuukin256/texlive-sci-ja:latest
 ```
