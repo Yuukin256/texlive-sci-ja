@@ -1,6 +1,6 @@
 # texlive-sci-ja
 
-TeX Liveのイメージです．日本語と理数系，プログラミング系のパッケージが導入されています．VSCodeの開発コンテナで使用する目的で作成しています．
+TeX Live のイメージです．日本語と理数系，プログラミング系のパッケージが導入されています．また，文章のチェックを行うために textlint を導入しています．VS Code の開発コンテナで使用する目的で作成しています．
 
 導入パッケージ一覧
 
@@ -23,7 +23,7 @@ minted
 
 ## 開発コンテナのセットアップ
 
-1. VSCodeに[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)のインストールが必要．
+1. VS Code に[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)のインストールが必要．
 2. `リモートメニューから開発コンテナー構成ファイルを追加`を選択．
 3. テンプレート選択画面で次を入力．
 

@@ -29,7 +29,8 @@ COPY ./jlisting.sty /usr/local/texlive/texmf-local/tex/latex/jlisting/jlisting.s
 # GhostscriptとGnuplot、latexindentに必要なパッケージをインストール
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends ghostscript gnuplot \
-  libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl\
+  libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl \
+  nodejs npm \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/texlive/texmf-local/tex/latex/gnuplot
@@ -39,5 +40,10 @@ RUN gnuplot -e 'set term tikz createstyle' \
   && mktexlsr
 
 WORKDIR /
+
+# textlintをインストール
+RUN npm install -g textlint  textlint-filter-rule-comments \
+  textlint-rule-preset-ja-spacing textlint-rule-preset-ja-technical-writing \
+  textlint-plugin-latex2e
 
 RUN rm -rf /texlive-install

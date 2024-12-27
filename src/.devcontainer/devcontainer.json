@@ -11,7 +11,7 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["James-Yu.latex-workshop"],
+      "extensions": ["James-Yu.latex-workshop", "taichi.vscode-textlint"],
       "settings": {
         "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)"
       }
