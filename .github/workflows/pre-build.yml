@@ -31,7 +31,7 @@ jobs:
         run: |
           prefix="ghcr.io/${{ github.repository }}:"
 
-          tags=$(echo "${{ steps.meta.outputs.tags }}" | sed -e "s#${prefix}##g")
+          tags=$(echo "${{ steps.meta.outputs.tags }}" | sed -e "s#${prefix}##gi")
           tags=$(echo "${tags}" | tr "\n" ",")
           tags=$(echo "${tags}" | sed "s/,*$//")
 
