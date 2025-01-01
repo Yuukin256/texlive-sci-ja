@@ -16,11 +16,15 @@ jobs:
       contents: read
       packages: write
     steps:
+      - uses: ASzc/change-string-case-action@v2
+        id: repository_name
+        with:
+          string: ${{ github.repository }}
       - uses: actions/checkout@v4
       - uses: docker/metadata-action@v5
         id: meta
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ steps.repository_name.outputs.lowercase }}
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
@@ -29,9 +33,9 @@ jobs:
       - id: format
         # https://github.com/devcontainers/ci/issues/235
         run: |
-          prefix="ghcr.io/${{ github.repository }}:"
+          prefix="ghcr.io/${{ steps.repository_name.outputs.lowercase }}:"
 
-          tags=$(echo "${{ steps.meta.outputs.tags }}" | sed -e "s#${prefix}##gi")
+          tags=$(echo "${{ steps.meta.outputs.tags }}" | sed -e "s#${prefix}##g")
           tags=$(echo "${tags}" | tr "\n" ",")
           tags=$(echo "${tags}" | sed "s/,*$//")
 
@@ -46,10 +50,10 @@ jobs:
       - uses: devcontainers/ci@v0.3
         with:
           subFolder: src
-          imageName: ghcr.io/${{ github.repository }}
+          imageName: ghcr.io/${{ steps.repository_name.outputs.lowercase }}
           imageTag: ${{ steps.format.outputs.tags }}
           platform: linux/amd64,linux/arm64
           push: always
           cacheFrom: |
-            ghcr.io/${{ github.repository }}
-            ghcr.io/${{ github.repository }}:main
+            ghcr.io/${{ steps.repository_name.outputs.lowercase }}
+            ghcr.io/${{ steps.repository_name.outputs.lowercase }}:main
