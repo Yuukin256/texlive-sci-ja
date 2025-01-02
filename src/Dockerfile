@@ -26,11 +26,11 @@ RUN tlmgr update --self --all && \
 # jlisting.sty を配置
 COPY ./jlisting.sty /usr/local/texlive/texmf-local/tex/latex/jlisting/jlisting.sty
 
-# GhostscriptとGnuplot、latexindentに必要なパッケージをインストール
+# GhostscriptとGnuplot、latexindent、svg等に必要なパッケージをインストール
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends ghostscript gnuplot \
   libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl \
-  nodejs npm \
+  inkscape nodejs npm \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/texlive/texmf-local/tex/latex/gnuplot
